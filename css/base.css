@@ -5,6 +5,18 @@ body {
     font-family: 'Roboto Condensed';
 }
 
+#content-main {
+    height: calc(100vh - 21px);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.band-node {
+    max-width: 400px;
+}
+
 #controls {
     background: #06F1DA;
     color: #000;
@@ -44,7 +56,7 @@ body {
 }
 
 .band-name, .song-name, .lyrics-block {
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .lyrics-block {
@@ -60,20 +72,30 @@ body {
 .scroll-past-end {
     height: 1000px;
 }
-.highlighted {
+.lyrics-highlighted {
     color: #06F1DA;
+    margin: 15px 20px;
+    font-size: 20px;
+    letter-spacing: 8px;
+    font-family: Menlo, monospace;
 }
 
 .band-name {
     cursor: default;
     color: #06F1DA;
     padding: 10px 25px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .song-name {
     padding-left: 45px;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+.song-name.completed {
+    color: #333;
 }
 
 .song-name:hover {

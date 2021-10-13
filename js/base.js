@@ -1,5 +1,6 @@
 // Main tree to store lyrics
 let lyricsTree = {};
+let completed = [];
 let fontSize = 40;
 
 // Make HTTP request
@@ -70,7 +71,7 @@ function appendLyricsBlock(bandName, songName) {
     lyricsBlock.appendChild(p);
 
     if (line.startsWith('[')) {
-      p.setAttribute('class', 'lyrics-line highlighted');
+      p.setAttribute('class', 'lyrics-highlighted');
     }
   }
 
@@ -93,11 +94,29 @@ function updateFontSize(step=0) {
   }
 }
 
+function markCompleted(bandName, songName) {
+  completed.push(bandName + songName);
+  buildMainPage();
+}
+
+function refreshMainPage() {
+  completed = [];
+  buildMainPage();
+}
+
 function buildSongPage(bandName, songName) {
   content, buttons, info = wipeContent();
   fontSize = 40;
 
   info.appendChild(document.createTextNode(bandName + ' — ' + songName))
+
+  // COMPLETE button
+  if (!completed.includes(bandName + songName)) {
+    let compButton = document.createElement('div');
+    buttons.appendChild(compButton);
+    compButton.appendChild(document.createTextNode('COMPLETE'));
+    compButton.setAttribute('onclick', 'markCompleted("' + bandName + '", "' + songName + '");');
+  }
 
   // BACK button
   let backButton = document.createElement('div');
@@ -141,12 +160,22 @@ function buildSongPage(bandName, songName) {
 function buildMainPage() {
   content, buttons, info = wipeContent();
 
+  let contentMain = document.createElement('div');
+  content.appendChild(contentMain);
+  contentMain.setAttribute('id', 'content-main');
+
+  // REFRESH button
+  let refreshButton = document.createElement('div');
+  buttons.appendChild(refreshButton);
+  refreshButton.appendChild(document.createTextNode('REFRESH ALL'));
+  refreshButton.setAttribute('onclick', 'refreshMainPage();');
+
   for (const [bandName, songDict] of Object.entries(lyricsTree)) {
     // Band node (div)
     let bandNode = document.createElement('div');
-    content.appendChild(bandNode);
+    contentMain.appendChild(bandNode);
     bandNode.setAttribute('id', 'band-' + bandName);
-    bandNode.setAttribute('class', 'bandNode');
+    bandNode.setAttribute('class', 'band-node');
 
     // Band name
     let bandNameNode = document.createElement('div');
@@ -160,7 +189,11 @@ function buildMainPage() {
 
       songNode.setAttribute('onclick', 'buildSongPage("' + bandName + '", "' + songName + '");');
       songNode.appendChild(document.createTextNode(songName));
-      songNode.setAttribute('class', 'song-name');
+      if (completed.includes(bandName + songName)) {
+        songNode.setAttribute('class', 'song-name completed');
+      } else {
+        songNode.setAttribute('class', 'song-name');
+      }
     }
   }
 }
