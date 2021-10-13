@@ -5,7 +5,7 @@ let fontSize = 40;
 
 // Create cookie
 function createCookie(name, value) {
-    document.cookie = name + "=" + value + "; path=/";
+    document.cookie = name + "=" + value + "; path=/; SameSite=None; Secure";
 }
 
 // Get cookie
