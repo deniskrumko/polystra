@@ -1,103 +1,113 @@
 body {
-    margin: 0;
-    background: #000;
-    color: #fefefe;
-    font-family: 'Roboto Condensed';
+  margin: 0;
+  background: #000;
+  color: #fefefe;
+  font-family: 'Roboto Condensed';
 }
 
 #content-main {
-    height: calc(100vh - 21px);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: flex-start;
+  height: calc(100vh - 21px);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 .band-node {
-    max-width: 400px;
+  max-width: 400px;
 }
 
 #controls {
-    background: #06F1DA;
-    color: #000;
-    font-size: 12px;
+  background: #06F1DA;
+  color: #000;
+  font-size: 12px;
 }
 
 #logo {
-    display: inline-block;
-    padding: 5px 0px 5px 10px;
-    font-weight: bold;
-    cursor: default;
+  display: inline-block;
+  padding: 5px 0px 5px 10px;
+  font-weight: bold;
+  cursor: default;
 }
 
 #buttons {
-    display: inline-block;
+  display: inline-block;
 }
 
 #buttons div {
-    display: inline-block;
-    padding: 5px 0px 5px 15px;
-    cursor: pointer;
+  display: inline-block;
+  padding: 5px 0px 5px 15px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
+
 #buttons div:hover {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #info {
-    float: right;
-    text-transform: uppercase;
-    font-size: 12px;
-    padding: 5px 10px;
+  float: right;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 5px 10px;
 }
 
 #lyrics-parent {
-    display: flex;
-    height: calc(100vh - 21px);
+  display: flex;
+  height: calc(100vh - 21px);
 }
 
-.band-name, .song-name, .lyrics-block {
-    font-size: 30px;
+.band-name,
+.song-name,
+.lyrics-block {
+  font-size: 30px;
 }
 
 .lyrics-block {
-    overflow-y: scroll;
-    padding: 5px;
-    border-right: 1px solid #06F1DA;
+  overflow-y: scroll;
+  padding: 5px;
+  border-right: 1px solid #06F1DA;
 }
 
 .lyrics-line {
-    margin: 5px 20px;
+  margin: 5px 20px;
 }
 
 .scroll-past-end {
-    height: 1000px;
+  height: 1000px;
 }
+
 .lyrics-highlighted {
-    color: #06F1DA;
-    margin: 15px 20px;
-    font-size: 20px;
-    letter-spacing: 8px;
-    font-family: Menlo, monospace;
+  color: #06F1DA;
+  margin: 15px 20px;
+  font-size: 20px;
+  letter-spacing: 8px;
+  font-family: Menlo, monospace;
 }
 
 .band-name {
-    cursor: default;
-    color: #06F1DA;
-    padding: 10px 25px;
-    font-weight: bold;
-    text-transform: uppercase;
+  cursor: default;
+  color: #06F1DA;
+  padding: 10px 25px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .song-name {
-    padding-left: 45px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  padding-left: 45px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .song-name.completed {
-    color: #333;
+  color: #333;
 }
 
 .song-name:hover {
-    transform: translateX(10px);
+  transform: translateX(10px);
 }
