@@ -1,5 +1,6 @@
 // Main tree to store lyrics
 let lyricsTree = {};
+let fontSize = 40;
 
 // Make HTTP request
 async function makeRequest(url) {
@@ -40,36 +41,105 @@ async function buildLyricsTree() {
   }
 }
 
-function buildSongPage(bandName, songName) {
+// Wipe all page content
+function wipeContent() {
   let content = document.getElementById('content');
-  content.innerHTML = '';  // Wipe content
+  let buttons = document.getElementById('buttons');
+  let info = document.getElementById('info');
+  content.innerHTML = '';
+  buttons.innerHTML = '';
+  info.innerHTML = '';
+  return content, buttons, info
+}
 
-  // Add controls section
-  let controlsNode = document.createElement('div');
-  content.appendChild(controlsNode);
-
-  // Add back button
-  let backButton = document.createElement('div');
-  controlsNode.appendChild(backButton);
-  backButton.appendChild(document.createTextNode('BACK'));
-  backButton.setAttribute('onclick', 'buildMainPage();');
-
-  // Add song lyrics
+// Add another lyrics block
+function appendLyricsBlock(bandName, songName) {
   let songContent = lyricsTree[bandName][songName];
   let songLyrics = decodeURIComponent(escape(atob(songContent)));
 
-  console.log(songLyrics.split('\n'));
+  let lyricsParentNode = document.getElementById('lyrics-parent');
+  let lyricsBlock = document.createElement('div');
+  lyricsParentNode.appendChild(lyricsBlock);
+  lyricsBlock.setAttribute('class', 'lyrics-block');
 
-  let lyricsNode = document.createElement('div');
-  content.appendChild(lyricsNode);
-  lyricsNode.appendChild(document.createTextNode(songLyrics));
+  for (const line of songLyrics.split('\n')) {
+    if (!line) {continue;}
+    let p = document.createElement('p');
+    p.setAttribute('class', 'lyrics-line');
+    p.appendChild(document.createTextNode(line));
+    lyricsBlock.appendChild(p);
 
+    if (line.startsWith('[')) {
+      p.setAttribute('class', 'lyrics-line highlighted');
+    }
+  }
+
+  let scrollPastEnd = document.createElement('div');
+  lyricsBlock.appendChild(scrollPastEnd);
+  scrollPastEnd.setAttribute('class', 'scroll-past-end');
+
+  updateFontSize();
+}
+
+// Update lyrics font size
+function updateFontSize(step=0) {
+  fontSize += step;
+  console.log(fontSize);
+
+  let lines = document.querySelectorAll('.lyrics-line');
+  for (let i = 0; i < lines.length; i ++ ) {
+      console.log(i);
+      lines[i].style.fontSize = fontSize + 'px';
+  }
+}
+
+function buildSongPage(bandName, songName) {
+  content, buttons, info = wipeContent();
+  fontSize = 40;
+
+  info.appendChild(document.createTextNode(bandName + ' — ' + songName))
+
+  // BACK button
+  let backButton = document.createElement('div');
+  buttons.appendChild(backButton);
+  backButton.appendChild(document.createTextNode('BACK'));
+  backButton.setAttribute('onclick', 'buildMainPage();');
+
+  // ADD COLUMN button
+  let addColumn = document.createElement('div');
+  buttons.appendChild(addColumn);
+  addColumn.appendChild(document.createTextNode('ADD COLUMN'));
+  addColumn.setAttribute('onclick', 'appendLyricsBlock("' + bandName + '", "' + songName + '");');
+
+  // REFRESH button
+  let refreshButton = document.createElement('div');
+  buttons.appendChild(refreshButton);
+  refreshButton.appendChild(document.createTextNode('REFRESH'));
+  refreshButton.setAttribute('onclick', 'buildSongPage("' + bandName + '", "' + songName + '");');
+
+  // FONT+ button
+  let fontPlus = document.createElement('div');
+  buttons.appendChild(fontPlus);
+  fontPlus.appendChild(document.createTextNode('FONT+'));
+  fontPlus.setAttribute('onclick', 'updateFontSize(5);');
+
+  // FONT- button
+  let fontMinus = document.createElement('div');
+  buttons.appendChild(fontMinus);
+  fontMinus.appendChild(document.createTextNode('FONT-'));
+  fontMinus.setAttribute('onclick', 'updateFontSize(-5);');
+
+  // Add song lyrics
+  let lyricsParentNode = document.createElement('div');
+  content.appendChild(lyricsParentNode);
+  lyricsParentNode.setAttribute('id', 'lyrics-parent')
+
+  appendLyricsBlock(bandName, songName);
 }
 
 // Build main page
 function buildMainPage() {
-  let content = document.getElementById('content');
-  content.innerHTML = '';  // Wipe content
+  content, buttons, info = wipeContent();
 
   for (const [bandName, songDict] of Object.entries(lyricsTree)) {
     // Band node (div)
@@ -81,7 +151,7 @@ function buildMainPage() {
     // Band name
     let bandNameNode = document.createElement('div');
     bandNode.appendChild(bandNameNode);
-    bandNameNode.setAttribute('class', 'bandName');
+    bandNameNode.setAttribute('class', 'band-name');
     bandNameNode.appendChild(document.createTextNode(bandName));
 
     for (const [songName, songContent] of Object.entries(songDict)) {
@@ -90,7 +160,7 @@ function buildMainPage() {
 
       songNode.setAttribute('onclick', 'buildSongPage("' + bandName + '", "' + songName + '");');
       songNode.appendChild(document.createTextNode(songName));
-      bandNode.setAttribute('class', 'songNode');
+      songNode.setAttribute('class', 'song-name');
     }
   }
 }
@@ -99,3 +169,7 @@ document.addEventListener('DOMContentLoaded', async function(event) {
   await buildLyricsTree();
   await buildMainPage();
 });
+
+window.onbeforeunload = function() {
+  return 'Do not refresh me!';
+}

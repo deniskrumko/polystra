@@ -1,4 +1,81 @@
 body {
-    background: black;
-    color: white;
+    margin: 0;
+    background: #000;
+    color: #fefefe;
+    font-family: 'Roboto Condensed';
+}
+
+#controls {
+    background: #06F1DA;
+    color: #000;
+    font-size: 12px;
+}
+
+#logo {
+    display: inline-block;
+    padding: 5px 0px 5px 10px;
+    font-weight: bold;
+    cursor: default;
+}
+
+#buttons {
+    display: inline-block;
+}
+
+#buttons div {
+    display: inline-block;
+    padding: 5px 0px 5px 15px;
+    cursor: pointer;
+}
+#buttons div:hover {
+    font-weight: bold;
+}
+
+#info {
+    float: right;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+#lyrics-parent {
+    display: flex;
+    height: calc(100vh - 21px);
+}
+
+.band-name, .song-name, .lyrics-block {
+    font-size: 40px;
+}
+
+.lyrics-block {
+    overflow-y: scroll;
+    padding: 5px;
+    border-right: 1px solid #06F1DA;
+}
+
+.lyrics-line {
+    margin: 5px 20px;
+}
+
+.scroll-past-end {
+    height: 1000px;
+}
+.highlighted {
+    color: #06F1DA;
+}
+
+.band-name {
+    cursor: default;
+    color: #06F1DA;
+    padding: 10px 25px;
+}
+
+.song-name {
+    padding-left: 45px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.song-name:hover {
+    transform: translateX(10px);
 }
