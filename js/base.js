@@ -1,19 +1,32 @@
 // Main tree to store lyrics
 let lyricsTree = {};
+let cookieName = 'lyricsTreeCookie'
 let completed = [];
 let fontSize = 40;
 
 // Create cookie
-function createCookie(name, value) {
-    document.cookie = name + "=" + value + "; path=/; SameSite=None; Secure";
+function createCookie(value) {
+    let date = new Date();
+    date.setTime(date.getTime() + (24 * 60 * 60 * 1000)); // 1 day
+    expires = "; expires=" + date.toUTCString();
+
+    let cookie = cookieName + "=" + value + expires + "; path=/; SameSite=None; Secure";
+    document.cookie = cookie;
+
+    if (value) {
+      console.log('Cookie set: ' + cookie);
+    } else {
+      console.error('Cookie wiped');
+    }
+    return cookie;
 }
 
 // Get cookie
-function getCookie(c_name) {
+function getCookie() {
     if (document.cookie.length > 0) {
-        c_start = document.cookie.indexOf(c_name + "=");
+        c_start = document.cookie.indexOf(cookieName + "=");
         if (c_start != -1) {
-            c_start = c_start + c_name.length + 1;
+            c_start = c_start + cookieName.length + 1;
             c_end = document.cookie.indexOf(";", c_start);
             if (c_end == -1) {
                 c_end = document.cookie.length;
@@ -21,7 +34,7 @@ function getCookie(c_name) {
             return unescape(document.cookie.substring(c_start, c_end));
         }
     }
-    return "";
+    return '';
 }
 
 // Make HTTP request
@@ -51,11 +64,11 @@ async function getBandSongs(band) {
 
 // Build initial lyrics tree
 async function buildLyricsTree() {
+    console.log('Build lyrics tree');
     lyricsTree = {};
 
     let root_url = 'https://api.github.com/repos/deniskrumko/polystra/git/trees/master';
     let root_json = await makeRequest(root_url);
-
     if (root_json['message']) {
         // API rate limit exceeded...
         content,
@@ -78,9 +91,10 @@ async function buildLyricsTree() {
         await getBandSongs(band);
     }
 
-    let lyricsTreeJSON = JSON.stringify(lyricsTree);
-    createCookie('lyricsTree', lyricsTreeJSON);
-    console.log('COOKIE SET');
+    if (lyricsTree) {
+        let lyricsTreeJSON = JSON.stringify(lyricsTree);
+        createCookie(lyricsTreeJSON);
+    }
 
     return true;
 }
@@ -129,7 +143,14 @@ function appendLyricsBlock(bandName, songName) {
 
 // Update lyrics font size
 function updateFontSize(step = 0) {
+    if (fontSize + step < 1) {
+      console.error('Font size is too small');
+      return;  // Negative font size is not possible
+    }
+
     fontSize += step;
+    console.log('Set font size: ' + fontSize + 'px');
+
     let lines = document.querySelectorAll('.lyrics-line');
     for (let i = 0; i < lines.length; i++) {
         lines[i].style.fontSize = fontSize + 'px';
@@ -137,16 +158,30 @@ function updateFontSize(step = 0) {
 }
 
 function markCompleted(bandName, songName) {
+    console.log('Song "' + bandName + '-' + songName + '" marked as completed');
     completed.push(bandName + songName);
     buildMainPage();
 }
 
 function refreshMainPage() {
-    completed = [];
-    buildMainPage();
+    if (window.confirm('Refresh all completed songs?')) {
+      console.error('Completed songs are wiped');
+      completed = [];
+      buildMainPage();
+    }
+}
+
+function updateLibrary() {
+    if (window.confirm('Update songs library? All content will be downloaded again.')) {
+      createCookie(''); // Clear cookie
+      buildLyricsTree();
+      buildMainPage();
+    }
 }
 
 function buildSongPage(bandName, songName) {
+    console.log('Building song page');
+
     content,
     buttons,
     info = wipeContent();
@@ -202,6 +237,8 @@ function buildSongPage(bandName, songName) {
 
 // Build main page
 function buildMainPage() {
+    console.log('Building main page');
+
     content,
     buttons,
     info = wipeContent();
@@ -213,8 +250,14 @@ function buildMainPage() {
     // REFRESH button
     let refreshButton = document.createElement('div');
     buttons.appendChild(refreshButton);
-    refreshButton.appendChild(document.createTextNode('REFRESH ALL'));
+    refreshButton.appendChild(document.createTextNode('REFRESH COMPLETED'));
     refreshButton.setAttribute('onclick', 'refreshMainPage();');
+
+    // UPDATE LIBRARY button
+    let updateLibButton = document.createElement('div');
+    buttons.appendChild(updateLibButton);
+    updateLibButton.appendChild(document.createTextNode('UPDATE LIB'));
+    updateLibButton.setAttribute('onclick', 'updateLibrary();');
 
     for (const [bandName, songDict] of Object.entries(lyricsTree)) {
         // Band node (div)
@@ -245,15 +288,15 @@ function buildMainPage() {
 }
 
 document.addEventListener('DOMContentLoaded', async function(event) {
-    let lyricsTreeJSON = getCookie('lyricsTree');
+    let lyricsTreeJSON = getCookie();
     let result = false;
 
     if (lyricsTreeJSON) {
-        console.log('INIT FROM COOKIE');
+        console.log('Init library from cookue');
         lyricsTree = JSON.parse(lyricsTreeJSON);
         result = true;
     } else {
-        console.log('INIT FROM API');
+        console.log('Init library from API');
         result = await buildLyricsTree();
     }
 
