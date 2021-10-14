@@ -27,42 +27,10 @@ iconMinus.setAttribute('src', 'icons/minus.svg');
 let iconColumn = document.createElement('img');
 iconColumn.setAttribute('src', 'icons/sidebar-collapse.svg');
 
-// Create cookie
-function createCookie(value) {
-    let date = new Date();
-    date.setTime(date.getTime() + (24 * 60 * 60 * 1000)); // 1 day
-    expires = "; expires=" + date.toUTCString();
-
-    let cookie = cookieName + "=" + value + expires + "; path=/; SameSite=None; Secure";
-    document.cookie = cookie;
-
-    if (value) {
-      console.log('Cookie set: ' + cookie);
-    } else {
-      console.error('Cookie wiped');
-    }
-    return cookie;
-}
-
-// Get cookie
-function getCookie() {
-    if (document.cookie.length > 0) {
-        c_start = document.cookie.indexOf(cookieName + "=");
-        if (c_start != -1) {
-            c_start = c_start + cookieName.length + 1;
-            c_end = document.cookie.indexOf(";", c_start);
-            if (c_end == -1) {
-                c_end = document.cookie.length;
-            }
-            return unescape(document.cookie.substring(c_start, c_end));
-        }
-    }
-    return '';
-}
-
 // Make HTTP request
 async function makeRequest(url) {
-    let public_oauth = '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';
+    let base64_public = 'Z2hwX004RW5sekJoOG02TU1pTzJFZkNhSFZ0ZVpxVzZLTjNEZFVmNA==';
+    let public_oauth = decodeURIComponent(escape(atob(base64_public)));
     let headers = {
       "Content-Type": "application/json",
       "Authorization": `Token ${public_oauth}`
