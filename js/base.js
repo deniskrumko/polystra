@@ -1,8 +1,31 @@
 // Main tree to store lyrics
 let lyricsTree = {};
+let lyricsStorage = window.localStorage;
 let cookieName = 'lyricsTreeCookie'
 let completed = [];
 let fontSize = 40;
+
+// ICONS
+let iconCheck = document.createElement('img');
+iconCheck.setAttribute('src', 'icons/check.svg');
+
+let iconBack = document.createElement('img');
+iconBack.setAttribute('src', 'icons/arrow-left.svg');
+
+let iconSync = document.createElement('img');
+iconSync.setAttribute('src', 'icons/sync.svg');
+
+let iconTask = document.createElement('img');
+iconTask.setAttribute('src', 'icons/tasklist.svg');
+
+let iconPlus = document.createElement('img');
+iconPlus.setAttribute('src', 'icons/plus.svg');
+
+let iconMinus = document.createElement('img');
+iconMinus.setAttribute('src', 'icons/minus.svg');
+
+let iconColumn = document.createElement('img');
+iconColumn.setAttribute('src', 'icons/sidebar-collapse.svg');
 
 // Create cookie
 function createCookie(value) {
@@ -39,7 +62,12 @@ function getCookie() {
 
 // Make HTTP request
 async function makeRequest(url) {
-    return await fetch(url).then((response) => {
+    let public_oauth = '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';
+    let headers = {
+      "Content-Type": "application/json",
+      "Authorization": `Token ${public_oauth}`
+    };
+    return await fetch(url, {headers,}).then((response) => {
         return response.json();
     });
 }
@@ -82,6 +110,7 @@ async function buildLyricsTree() {
         return false;
     }
 
+    console.log('Root directory downloaded');
     let text_dir = root_json['tree'].find(function(element, index, array) {
         return element['path'] == 'lyrics';
     })
@@ -92,8 +121,8 @@ async function buildLyricsTree() {
     }
 
     if (lyricsTree) {
-        let lyricsTreeJSON = JSON.stringify(lyricsTree);
-        createCookie(lyricsTreeJSON);
+        console.log('Local storage updated');
+        lyricsStorage.setItem(cookieName, JSON.stringify(lyricsTree));
     }
 
     return true;
@@ -110,6 +139,13 @@ function wipeContent() {
     return content, buttons, info
 }
 
+function wipeBlock(el) {
+  let deletableBlocks = ['lyrics-divider', 'lyrics-line'];
+  while (deletableBlocks.includes(el.nextSibling.className)) {
+    el.nextSibling.remove();
+  }
+}
+
 // Add another lyrics block
 function appendLyricsBlock(bandName, songName) {
     let songContent = lyricsTree[bandName][songName];
@@ -123,14 +159,20 @@ function appendLyricsBlock(bandName, songName) {
     for (const line of songLyrics.split('\n')) {
         if (!line) {
             continue;
-        }
-        let p = document.createElement('p');
-        p.setAttribute('class', 'lyrics-line');
-        p.appendChild(document.createTextNode(line));
-        lyricsBlock.appendChild(p);
+        } else if (line === '-') {
+          let divider = document.createElement('div');
+          divider.setAttribute('class', 'lyrics-divider');
+          lyricsBlock.appendChild(divider);
+        } else {
+          let p = document.createElement('p');
+          p.setAttribute('class', 'lyrics-line');
+          p.appendChild(document.createTextNode(line));
+          lyricsBlock.appendChild(p);
 
-        if (line.startsWith('[')) {
-            p.setAttribute('class', 'lyrics-highlighted');
+          if (line.startsWith('[')) {
+              p.setAttribute('class', 'lyrics-highlighted');
+              p.setAttribute('onclick', 'wipeBlock(this);');
+          }
         }
     }
 
@@ -171,12 +213,21 @@ function refreshMainPage() {
     }
 }
 
-function updateLibrary() {
+async function updateLibrary() {
     if (window.confirm('Update songs library? All content will be downloaded again.')) {
-      createCookie(''); // Clear cookie
-      buildLyricsTree();
+      console.error('Local storage wiped');
+      lyricsStorage.clear();
+      wipeContent();
+
+      await buildLyricsTree();
       buildMainPage();
     }
+}
+
+function addDivider(buttons) {
+  let divider = document.createElement('span');
+  divider.setAttribute('class', 'divider');
+  buttons.appendChild(divider);
 }
 
 function buildSongPage(bandName, songName) {
@@ -194,38 +245,56 @@ function buildSongPage(bandName, songName) {
         let compButton = document.createElement('div');
         buttons.appendChild(compButton);
         compButton.appendChild(document.createTextNode('COMPLETE'));
-        compButton.setAttribute('onclick', 'markCompleted("' + bandName + '", "' + songName + '");');
+        compButton.prepend(iconCheck);
+        compButton.setAttribute(
+          'onclick', 'markCompleted("' + bandName + '", "' + songName + '");'
+        );
+        compButton.setAttribute('class', 'with-icon');
     }
 
     // BACK button
     let backButton = document.createElement('div');
     buttons.appendChild(backButton);
     backButton.appendChild(document.createTextNode('BACK'));
+    backButton.prepend(iconBack);
     backButton.setAttribute('onclick', 'buildMainPage();');
-
-    // ADD COLUMN button
-    let addColumn = document.createElement('div');
-    buttons.appendChild(addColumn);
-    addColumn.appendChild(document.createTextNode('ADD COLUMN'));
-    addColumn.setAttribute('onclick', 'appendLyricsBlock("' + bandName + '", "' + songName + '");');
+    backButton.setAttribute('class', 'with-icon');
 
     // REFRESH button
     let refreshButton = document.createElement('div');
     buttons.appendChild(refreshButton);
     refreshButton.appendChild(document.createTextNode('REFRESH'));
+    refreshButton.prepend(iconSync);
     refreshButton.setAttribute('onclick', 'buildSongPage("' + bandName + '", "' + songName + '");');
+    refreshButton.setAttribute('class', 'with-icon');
+
+    addDivider(buttons);
 
     // FONT+ button
     let fontPlus = document.createElement('div');
     buttons.appendChild(fontPlus);
-    fontPlus.appendChild(document.createTextNode('FONT+'));
+    fontPlus.prepend(iconPlus);
+    fontPlus.appendChild(document.createTextNode('FONT'));
     fontPlus.setAttribute('onclick', 'updateFontSize(5);');
+    fontPlus.setAttribute('class', 'with-icon');
 
     // FONT- button
     let fontMinus = document.createElement('div');
     buttons.appendChild(fontMinus);
-    fontMinus.appendChild(document.createTextNode('FONT-'));
+    fontMinus.prepend(iconMinus);
+    fontMinus.appendChild(document.createTextNode('FONT'));
     fontMinus.setAttribute('onclick', 'updateFontSize(-5);');
+    fontMinus.setAttribute('class', 'with-icon');
+
+    addDivider(buttons);
+
+    // ADD COLUMN button
+    let addColumn = document.createElement('div');
+    buttons.appendChild(addColumn);
+    addColumn.appendChild(document.createTextNode('ADD COLUMN'));
+    addColumn.prepend(iconColumn);
+    addColumn.setAttribute('onclick', 'appendLyricsBlock("' + bandName + '", "' + songName + '");');
+    addColumn.setAttribute('class', 'with-icon');
 
     // Add song lyrics
     let lyricsParentNode = document.createElement('div');
@@ -250,14 +319,21 @@ function buildMainPage() {
     // REFRESH button
     let refreshButton = document.createElement('div');
     buttons.appendChild(refreshButton);
+    refreshButton.prepend(iconTask);
     refreshButton.appendChild(document.createTextNode('REFRESH COMPLETED'));
     refreshButton.setAttribute('onclick', 'refreshMainPage();');
+    refreshButton.setAttribute('class', 'with-icon');
+
+    addDivider(buttons);
 
     // UPDATE LIBRARY button
     let updateLibButton = document.createElement('div');
     buttons.appendChild(updateLibButton);
+    updateLibButton.prepend(iconSync);
     updateLibButton.appendChild(document.createTextNode('UPDATE LIB'));
     updateLibButton.setAttribute('onclick', 'updateLibrary();');
+    updateLibButton.setAttribute('class', 'with-icon');
+
 
     for (const [bandName, songDict] of Object.entries(lyricsTree)) {
         // Band node (div)
@@ -288,11 +364,11 @@ function buildMainPage() {
 }
 
 document.addEventListener('DOMContentLoaded', async function(event) {
-    let lyricsTreeJSON = getCookie();
+    let lyricsTreeJSON = lyricsStorage.getItem(cookieName);
     let result = false;
 
     if (lyricsTreeJSON) {
-        console.log('Init library from cookue');
+        console.log('Init library from local storage');
         lyricsTree = JSON.parse(lyricsTreeJSON);
         result = true;
     } else {
