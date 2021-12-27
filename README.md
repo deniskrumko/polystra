@@ -1,5 +1,7 @@
 # POLYSTRA
-Website for viewing LARGE song lyrics on rehearsals.
+Website for viewing **LARGE** song lyrics on rehearsals.
+
+Sorry, but songlist is hardcoded just for me :)
 
 **[https://deniskrumko.github.io/polystra/](https://deniskrumko.github.io/polystra/)**
 
