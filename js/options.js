@@ -5,7 +5,7 @@ let song = null;
 
 function resetOptions() {
   settings = {};
-  sessionStorage.setItem(BANDS, JSON.stringify(settings));
+  localStorage.setItem(BANDS, JSON.stringify(settings));
 }
 
 function getOption(key) {
@@ -14,7 +14,7 @@ function getOption(key) {
     return;
   }
 
-  const settings = JSON.parse(sessionStorage.getItem(BANDS)) || {};
+  const settings = JSON.parse(localStorage.getItem(BANDS)) || {};
   return settings[band]?.[song]?.[key];
 }
 
@@ -24,7 +24,7 @@ function setOption(key, value) {
     return;
   }
 
-  const settings = JSON.parse(sessionStorage.getItem(BANDS)) || {};
+  const settings = JSON.parse(localStorage.getItem(BANDS)) || {};
   if (!settings[band]) {
     settings[band] = {};
   }
@@ -32,5 +32,5 @@ function setOption(key, value) {
     settings[band][song] = {};
   }
   settings[band][song][key] = value;
-  sessionStorage.setItem(BANDS, JSON.stringify(settings));
+  localStorage.setItem(BANDS, JSON.stringify(settings));
 }

@@ -14,6 +14,7 @@ function loadMobileFab() {
         fabActions.style.display = "none";
       }
     });
+
     // Hide actions when clicking outside
     document.addEventListener("click", function (e) {
       if (isFabActionsVisible() && !fab.contains(e.target) && !fabActions.contains(e.target)) {
