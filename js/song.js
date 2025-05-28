@@ -5,6 +5,8 @@ const FONT_SIZE = "fontSize";
 const defaultFontSize = 20;
 const defaultColumnsCount = 1;
 
+let collapsedAll = false;
+
 function updateIsCompleted(completed=null, redirect=false) {
   if (completed == null) {
     completed = getOption(COMPLETED) || false;
@@ -98,4 +100,21 @@ function collapseBlock(el) {
   } else {
     el.classList.remove("collapsed");
   }
+}
+
+function collapseAll() {
+  const collapsables = document.querySelectorAll('.collapsable');
+  collapsables.forEach(el => {
+    el.style.display = collapsedAll ? '' : 'none';
+  });
+
+  const hightlighted = document.querySelectorAll('.lyrics-highlighted');
+  hightlighted.forEach(el => {
+    el.classList.remove("collapsed");
+    if (!collapsedAll) {
+      el.classList.add("collapsed");
+    }
+  });
+
+  collapsedAll = !collapsedAll;
 }

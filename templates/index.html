@@ -47,9 +47,11 @@
       {% for song in band.songs %}
       <a class="song-name" href="{{ band.get_song_page(song) }}" data-band="{{ band.slug }}" data-song="{{ song.slug}}">
         <span class="name">{{ song }}</span>
-        {% for tag in song.tags %}
-        <span class="tag">#{{ tag }}</span>
-        {% endfor %}
+        <span class="tags">
+          {% for tag in song.tags %}
+          <span class="tag">#{{ tag }}</span>
+          {% endfor %}
+        </span>
       </a>
       <br>
       {% endfor %}
@@ -64,11 +66,11 @@
   </div>
 
   <div id="mobile-fab-actions" class="mobile-fab-actions">
-    <div class="btn" onclick="resetAllOptions();">
-      <img src="icons/sync.svg">Full reset
+    <div class="fab-btn" onclick="resetAllOptions();">
+      <img class="left-img" src="icons/sync.svg">Reset all
     </div>
-    <div class="btn" onclick="resetCompletedSongs();">
-      <img src="icons/sync.svg">Reset completed
+    <div class="fab-btn" onclick="resetCompletedSongs();">
+      <img class="left-img" src="icons/sync.svg">Reset completed
     </div>
   </div>
 </body>

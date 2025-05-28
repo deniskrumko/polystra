@@ -13,6 +13,12 @@ PAGES_DIR = Path("pages")
 
 
 @dataclass
+class Link:
+    url: str
+    name: str
+
+
+@dataclass
 class Line:
     text: str
     highlighted: bool = False
@@ -20,13 +26,26 @@ class Line:
     divider: bool = False
 
     def __str__(self) -> str:
-        return self.text
+        return self.formatted_text
+
+    @property
+    def formatted_text(self) -> str:
+        text = self.text.strip()
+
+        if not self.highlighted and "[" in self.text:
+            text = text.replace("[", "<span class='hl'>[").replace("]", "]</span>")
+
+        if not self.highlighted and "(" in self.text:
+            text = text.replace("(", "<span class='dim'>(").replace(")", ")</span>")
+
+        return text
 
 
 @dataclass
 class Song:
     name: str
     lines: list[Line]
+    links: list[Link]
     tags: list[str]
 
     def __str__(self) -> str:
@@ -39,13 +58,23 @@ class Song:
     def from_file(cls, name: str, data: str) -> "Song":
         tags: list[str] = []
         lines: list[Line] = []
+        links: list[Link] = []
 
         for line in data.splitlines():
             line = line.strip()
+
             if line.startswith("#"):
                 parts = line.split("#")
                 for part in parts[1:]:
                     tags.append(part.strip().replace(" ", "_").lower())
+            elif line.startswith("http://") or line.startswith("https://"):
+                parts = line.split(";")
+
+                url = url_name = parts[0].strip()
+                if len(parts) > 1:
+                    url_name = parts[1].strip()
+
+                links.append(Link(url=url, name=url_name))
             else:
                 # Skip first empty line
                 if not lines and line == "":
@@ -60,7 +89,12 @@ class Song:
                     ),
                 )
 
-        return cls(name=name, lines=lines, tags=tags)
+        return cls(
+            name=name,
+            lines=lines,
+            tags=tags,
+            links=links,
+        )
 
     @property
     def slug(self) -> str:

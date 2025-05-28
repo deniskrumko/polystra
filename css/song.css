@@ -46,7 +46,40 @@
     color: #049284;
 }
 
+.hl {
+    color: #049284;
+}
+
+.dim {
+    color: #777;
+}
+
+#links {
+    position: absolute;
+    bottom: -4px;
+    background: black;
+    border: 1px solid #06F1DA;
+    border-top-left-radius: 8px;
+    right: -1px;
+    padding-right: 12px;
+}
+
+#links a {
+    color: #06F1DA;
+    padding: 6px 0px 10px 12px;
+    font-size: 18px;
+    display: inline-block;
+}
+
+#links a:hover {
+    text-decoration: underline;
+}
+
 @media screen and (max-width: 1000px) {
+    .lyrics-block {
+        border-right: none;
+    }
+
     .lyrics-line {
         margin: 5px 10px;
     }

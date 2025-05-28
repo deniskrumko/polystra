@@ -27,29 +27,35 @@
       </a>
     </div>
     <div id="control-center">
-      <div class="btn" onclick="updateFontSize(+5);">
-        <img src="../../icons/plus.svg">Font
+      <div class="btn" onclick="updateFontSize(+2);">
+        <img src="../../icons/plus.svg">Size
       </div>
-      <div class="btn" onclick="updateFontSize(-5);">
-        <img src="../../icons/minus.svg">Font
+      <div class="btn" onclick="updateFontSize(-2);">
+        <img src="../../icons/minus.svg">Size
       </div>
 
       <div class="divider"></div>
 
       <div class="btn" onclick="updateColumns(+1);">
-        <img src="../../icons/plus.svg">Column
+        <img src="../../icons/plus.svg">Col
       </div>
       <div class="btn" onclick="updateColumns(-1);">
-        <img src="../../icons/minus.svg">Column
+        <img src="../../icons/minus.svg">Col
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="btn" onclick="collapseAll();">
+        <img src="../../icons/sidebar-collapse.svg">Toggle
       </div>
 
       <div class="divider"></div>
 
       <div class="btn mark-completed" onclick="updateIsCompleted(true, redirect=true);">
-        <img src="../../icons/check.svg">Complete
+        <img src="../../icons/check.svg">Done
       </div>
       <div class="btn mark-uncompleted" onclick="updateIsCompleted(false);" style="display: none;">
-        <img src="../../icons/minus.svg">Uncomplete
+        <img src="../../icons/minus.svg">Undone
       </div>
       <div class="btn" onclick="resetOptions();">
         <img src="../../icons/sync.svg">Reset
@@ -66,6 +72,10 @@
       <div class="lyrics-block" id="lyrics-block-original">
         
         
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[VERSE 1]</p>
+        
+        
+        
         <p class="lyrics-line collapsable">Love, it will get you nowhere</p>
         
         
@@ -79,6 +89,10 @@
         
         
         <p class="lyrics-line collapsable">So come to me now</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
         
         
         
@@ -98,27 +112,31 @@
         
         
         
-        <p class="lyrics-line collapsable">I'm gonna make you</p>
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[PRE-CHORUS]</p>
         
         
         
-        <p class="lyrics-line collapsable">I'm gonna break you</p>
+        <p class="lyrics-line collapsable">I'm gonna make you...</p>
         
         
         
-        <p class="lyrics-line collapsable">I'm gonna make you</p>
+        <p class="lyrics-line collapsable">I'm gonna break you...</p>
         
         
         
-        <p class="lyrics-line collapsable">A fucking psycho</p>
+        <p class="lyrics-line collapsable">I'm gonna make you...</p>
         
         
         
-        <p class="lyrics-line collapsable">A fucking psycho</p>
+        <p class="lyrics-line collapsable">A fucking psycho! <span class='hl'>[x3]</span></p>
         
         
         
-        <p class="lyrics-line collapsable">A fucking psycho</p>
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[CHORUS]</p>
         
         
         
@@ -130,31 +148,7 @@
         
         
         
-        <p class="lyrics-line collapsable">Are you a human drone?</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">(Aye, sir!)</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">Are you a killing machine?</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">(Aye, sir!)</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">I'm in control, motherfucker, do you understand?</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">(Aye, sir!)</p>
-        
-        
-        
-        <div class="lyrics-break collapsable"></div>
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[VERSE 2]</p>
         
         
         
@@ -174,7 +168,11 @@
         
         
         
-        <p class="lyrics-line collapsable">I'll turn you into a super drone (super drone)</p>
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">I'll turn you into a super drone <span class='dim'>(super drone)</span></p>
         
         
         
@@ -190,71 +188,7 @@
         
         
         
-        <p class="lyrics-line collapsable">I'm gonna make you</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">I'm gonna break you</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">I'm gonna make you</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">A fucking psycho</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">A fucking psycho</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">A fucking psycho</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">Your ass belongs to me now</p>
-        
-        
-        
-        <div class="lyrics-break collapsable"></div>
-        
-        
-        
-        <p class="lyrics-line collapsable">Are you a psycho killer? Say "I'm a psycho killer!"</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">(I am a psycho killer!)</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">Scream it!</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">(I am a psycho killer!)</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">Show me your war face!</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">(AHHHH!)</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">You are a pussy! I said show me your war face!</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">(AHHHH!)</p>
-        
-        
-        
-        <div class="lyrics-break collapsable"></div>
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[PRE-CHORUS]</p>
         
         
         
@@ -270,15 +204,15 @@
         
         
         
-        <p class="lyrics-line collapsable">A fucking psycho</p>
+        <p class="lyrics-line collapsable">A fucking psycho! <span class='hl'>[x3]</span></p>
         
         
         
-        <p class="lyrics-line collapsable">A fucking psycho</p>
+        <div class="lyrics-break collapsable"></div>
         
         
         
-        <p class="lyrics-line collapsable">A fucking psycho</p>
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[CHORUS]</p>
         
         
         
@@ -290,23 +224,7 @@
         
         
         
-        <p class="lyrics-line collapsable">I will break you, do you understand?</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">I will break you, do you understand?</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">I will break you, do you understand?</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">I will break you, do you understand?</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">(Aye, sir!)</p>
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[SOLO]</p>
         
         
         
@@ -314,15 +232,11 @@
         
         
         
-        <p class="lyrics-line collapsable">You fucking psycho</p>
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[CHORUS]</p>
         
         
         
-        <p class="lyrics-line collapsable">Your ass belongs to me now</p>
-        
-        
-        
-        <p class="lyrics-line collapsable">Your ass belongs to me now</p>
+        <p class="lyrics-line collapsable">Your ass belongs to me now <span class='hl'>[x2]</span></p>
         
         
         <div class="scroll-past-end"></div>
@@ -330,33 +244,53 @@
     </div>
   </div>
 
+  <div id="links" class="mobile-hidden">
+    
+    <a href="https://www.youtube.com/watch?v=zdtxioCmtMc" target="_blank">YouTube</a>
+    
+    <a href="https://www.songsterr.com/a/wsa/muse-psycho-tab-s397217" target="_blank">Songsterr</a>
+    
+  </div>
+
   <div id="mobile-fab" class="mobile-fab">
     <img src="../../icons/three-bars.svg" alt="Open actions">
   </div>
 
   <div id="mobile-fab-actions" class="mobile-fab-actions">
-    <div onclick="resetOptions();">
-      <img class="left-img" src="../../icons/sync.svg">RESET VISUALS
+    <div class="fab-btn" onclick="resetOptions();">
+      <img class="left-img" src="../../icons/sync.svg">Reset visuals
     </div>
 
-    <div class="centered">
+    
+    <a class="fab-btn" href="https://www.youtube.com/watch?v=zdtxioCmtMc" target="_blank">
+      <img class="left-img" src="../../icons/arrow-left.svg">
+      YouTube</a>
+    </a>
+    
+    <a class="fab-btn" href="https://www.songsterr.com/a/wsa/muse-psycho-tab-s397217" target="_blank">
+      <img class="left-img" src="../../icons/arrow-left.svg">
+      Songsterr</a>
+    </a>
+    
+
+    <div class="fab-btn centered">
       <img class="left-img" src="../../icons/minus.svg" onclick="updateColumns(-1);">
-      COLUMN
+      Column
       <img class="right-img" src="../../icons/plus.svg" onclick="updateColumns(+1);">
     </div>
 
-    <div class="centered">
-      <img class="left-img" src="../../icons/minus.svg" onclick="updateFontSize(-5);">
-      FONT
-      <img class="right-img" src="../../icons/plus.svg" onclick="updateFontSize(+5);">
+    <div class="fab-btn centered">
+      <img class="left-img" src="../../icons/minus.svg" onclick="updateFontSize(-2);">
+      Font size
+      <img class="right-img" src="../../icons/plus.svg" onclick="updateFontSize(+2);">
     </div>
 
-    <div class="mark-completed" onclick="updateIsCompleted(true, redirect=true);">
-      <img class="left-img" src="../../icons/check.svg">COMPLETE
+    <div class="fab-btn mark-completed" onclick="updateIsCompleted(true, redirect=true);">
+      <img class="left-img" src="../../icons/check.svg">Done
     </div>
 
-    <div class="mark-uncompleted" onclick="updateIsCompleted(false);" style="display: none;">
-      <img class="left-img" src="../../icons/minus.svg">UNCOMPLETE
+    <div class="fab-btn mark-uncompleted" onclick="updateIsCompleted(false);" style="display: none;">
+      <img class="left-img" src="../../icons/minus.svg">Undone
     </div>
   </div>
 </body>

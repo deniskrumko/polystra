@@ -46,7 +46,7 @@ function resetCompletedSongs() {
 }
 
 function resetAllOptions() {
-  if (window.confirm('Are you sure you want to reset all options? This action cannot be undone.')) {
+  if (window.confirm('Reset all song visuals (font, columns) and completed songs?')) {
     resetOptions();
     displayCompletedSongs();
     console.log('Reset all options');

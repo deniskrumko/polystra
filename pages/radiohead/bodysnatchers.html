@@ -27,29 +27,35 @@
       </a>
     </div>
     <div id="control-center">
-      <div class="btn" onclick="updateFontSize(+5);">
-        <img src="../../icons/plus.svg">Font
+      <div class="btn" onclick="updateFontSize(+2);">
+        <img src="../../icons/plus.svg">Size
       </div>
-      <div class="btn" onclick="updateFontSize(-5);">
-        <img src="../../icons/minus.svg">Font
+      <div class="btn" onclick="updateFontSize(-2);">
+        <img src="../../icons/minus.svg">Size
       </div>
 
       <div class="divider"></div>
 
       <div class="btn" onclick="updateColumns(+1);">
-        <img src="../../icons/plus.svg">Column
+        <img src="../../icons/plus.svg">Col
       </div>
       <div class="btn" onclick="updateColumns(-1);">
-        <img src="../../icons/minus.svg">Column
+        <img src="../../icons/minus.svg">Col
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="btn" onclick="collapseAll();">
+        <img src="../../icons/sidebar-collapse.svg">Toggle
       </div>
 
       <div class="divider"></div>
 
       <div class="btn mark-completed" onclick="updateIsCompleted(true, redirect=true);">
-        <img src="../../icons/check.svg">Complete
+        <img src="../../icons/check.svg">Done
       </div>
       <div class="btn mark-uncompleted" onclick="updateIsCompleted(false);" style="display: none;">
-        <img src="../../icons/minus.svg">Uncomplete
+        <img src="../../icons/minus.svg">Undone
       </div>
       <div class="btn" onclick="resetOptions();">
         <img src="../../icons/sync.svg">Reset
@@ -110,7 +116,7 @@
         
         
         
-        <p class="lyrics-line collapsable">Oooh-oooh [x2]</p>
+        <p class="lyrics-line collapsable">Oooh-oooh <span class='hl'>[x2]</span></p>
         
         
         
@@ -230,7 +236,7 @@
         
         
         
-        <p class="lyrics-line collapsable">Oh-oh-oh-oh-oh-oh-oh-oh-oh-oh... [x3]</p>
+        <p class="lyrics-line collapsable">Oh-oh-oh-oh-oh-oh-oh-oh-oh-oh... <span class='hl'>[x3]</span></p>
         
         
         
@@ -238,7 +244,7 @@
         
         
         
-        <p class="lyrics-line collapsable">I've seen it coming [x4]</p>
+        <p class="lyrics-line collapsable">I've seen it coming <span class='hl'>[x4]</span></p>
         
         
         <div class="scroll-past-end"></div>
@@ -246,33 +252,53 @@
     </div>
   </div>
 
+  <div id="links" class="mobile-hidden">
+    
+    <a href="https://www.youtube.com/watch?v=cAIHRIO73e8" target="_blank">YouTube</a>
+    
+    <a href="https://www.songsterr.com/a/wsa/radiohead-bodysnatchers-bass-tab-s34780" target="_blank">Songsterr</a>
+    
+  </div>
+
   <div id="mobile-fab" class="mobile-fab">
     <img src="../../icons/three-bars.svg" alt="Open actions">
   </div>
 
   <div id="mobile-fab-actions" class="mobile-fab-actions">
-    <div onclick="resetOptions();">
-      <img class="left-img" src="../../icons/sync.svg">RESET VISUALS
+    <div class="fab-btn" onclick="resetOptions();">
+      <img class="left-img" src="../../icons/sync.svg">Reset visuals
     </div>
 
-    <div class="centered">
+    
+    <a class="fab-btn" href="https://www.youtube.com/watch?v=cAIHRIO73e8" target="_blank">
+      <img class="left-img" src="../../icons/arrow-left.svg">
+      YouTube</a>
+    </a>
+    
+    <a class="fab-btn" href="https://www.songsterr.com/a/wsa/radiohead-bodysnatchers-bass-tab-s34780" target="_blank">
+      <img class="left-img" src="../../icons/arrow-left.svg">
+      Songsterr</a>
+    </a>
+    
+
+    <div class="fab-btn centered">
       <img class="left-img" src="../../icons/minus.svg" onclick="updateColumns(-1);">
-      COLUMN
+      Column
       <img class="right-img" src="../../icons/plus.svg" onclick="updateColumns(+1);">
     </div>
 
-    <div class="centered">
-      <img class="left-img" src="../../icons/minus.svg" onclick="updateFontSize(-5);">
-      FONT
-      <img class="right-img" src="../../icons/plus.svg" onclick="updateFontSize(+5);">
+    <div class="fab-btn centered">
+      <img class="left-img" src="../../icons/minus.svg" onclick="updateFontSize(-2);">
+      Font size
+      <img class="right-img" src="../../icons/plus.svg" onclick="updateFontSize(+2);">
     </div>
 
-    <div class="mark-completed" onclick="updateIsCompleted(true, redirect=true);">
-      <img class="left-img" src="../../icons/check.svg">COMPLETE
+    <div class="fab-btn mark-completed" onclick="updateIsCompleted(true, redirect=true);">
+      <img class="left-img" src="../../icons/check.svg">Done
     </div>
 
-    <div class="mark-uncompleted" onclick="updateIsCompleted(false);" style="display: none;">
-      <img class="left-img" src="../../icons/minus.svg">UNCOMPLETE
+    <div class="fab-btn mark-uncompleted" onclick="updateIsCompleted(false);" style="display: none;">
+      <img class="left-img" src="../../icons/minus.svg">Undone
     </div>
   </div>
 </body>
