@@ -19,18 +19,18 @@
 <body>
   <div id="controls">
     <div id="control-left">
-      <a id="logo" href="index.html">POLYSTRA MUSIC</a>
+      <a class="logo" href="index.html">
+        <b>POLYSTRA MUSIC</b>
+      </a>
     </div>
     <div id="control-center">
     </div>
     <div id="control-right">
       <div class="btn" onclick="resetCompletedSongs();">
-        <img src="icons/sync.svg" alt="">
-        Reset completed
+        <img src="icons/sync.svg">Reset completed
       </div>
       <div class="btn" onclick="resetAllOptions();">
-        <img src="icons/sync.svg" alt="">
-        Full reset
+        <img src="icons/sync.svg">Full reset
       </div>
     </div>
   </div>
@@ -46,19 +46,40 @@
       <div class="band-name" data-band="{{ band.slug }}">{{ band }}</div>
       {% for song in band.songs %}
       <a class="song-name" href="{{ band.get_song_page(song) }}" data-band="{{ band.slug }}" data-song="{{ song.slug}}">
-        {{ song }}
+        <span class="name">{{ song }}</span>
+        {% for tag in song.tags %}
+        <span class="tag">#{{ tag }}</span>
+        {% endfor %}
       </a>
+      <br>
       {% endfor %}
     </div>
     {% endfor %}
+    <br>
+    <br>
+  </div>
+
+  <div id="mobile-fab" class="mobile-fab">
+    <img src="icons/three-bars.svg" alt="Open actions">
+  </div>
+
+  <div id="mobile-fab-actions" class="mobile-fab-actions">
+    <div class="btn" onclick="resetAllOptions();">
+      <img src="icons/sync.svg">Full reset
+    </div>
+    <div class="btn" onclick="resetCompletedSongs();">
+      <img src="icons/sync.svg">Reset completed
+    </div>
   </div>
 </body>
 
 <script src="js/options.js"></script>
+<script src="js/mobile_fab.js"></script>
 <script src="js/index.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     displayCompletedSongs();
+    loadMobileFab();
   });
 </script>
 

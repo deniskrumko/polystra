@@ -13,49 +13,47 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon/favicon-16x16.png">
   <link rel="manifest" href="../../icons/favicon/site.webmanifest">
+  <meta name="theme-color" content="#06F1DA">
 </head>
 
 <body>
   <div id="controls">
     <div id="control-left">
-      <a id="logo" href="../../index.html">POLYSTRA MUSIC</a>
+      <a href="../../index.html" class="logo mobile-hidden">
+        <b>POLYSTRA MUSIC</b>
+      </a>
+      <a href="../../index.html" class="logo mobile-show">
+        <b>Linkin Park</b> – One Step Closer
+      </a>
     </div>
     <div id="control-center">
       <div class="btn" onclick="updateFontSize(+5);">
-        <img src="../../icons/plus.svg" alt="">
-        FONT
+        <img src="../../icons/plus.svg">Font
       </div>
       <div class="btn" onclick="updateFontSize(-5);">
-        <img src="../../icons/minus.svg" alt="">
-        FONT
+        <img src="../../icons/minus.svg">Font
       </div>
 
       <div class="divider"></div>
 
       <div class="btn" onclick="updateColumns(+1);">
-        <img src="../../icons/plus.svg" alt="">
-        COLUMN
+        <img src="../../icons/plus.svg">Column
       </div>
       <div class="btn" onclick="updateColumns(-1);">
-        <img src="../../icons/minus.svg" alt="">
-        COLUMN
+        <img src="../../icons/minus.svg">Column
       </div>
 
       <div class="divider"></div>
 
-      <div id="mark-completed" class="btn" onclick="updateIsCompleted(true, redirect=true);">
-        <img src="../../icons/check.svg" alt="">
-        MARK COMPLETED
+      <div class="btn mark-completed" onclick="updateIsCompleted(true, redirect=true);">
+        <img src="../../icons/check.svg">Complete
       </div>
-      <div id="mark-uncompleted" class="btn" onclick="updateIsCompleted(false);" style="display: none;">
-        <img src="../../icons/minus.svg" alt="">
-        MARK UNCOMPLETED
+      <div class="btn mark-uncompleted" onclick="updateIsCompleted(false);" style="display: none;">
+        <img src="../../icons/minus.svg">Uncomplete
       </div>
       <div class="btn" onclick="resetOptions();">
-        <img src="../../icons/sync.svg" alt="">
-        RESET OPTIONS
+        <img src="../../icons/sync.svg">Reset
       </div>
-
     </div>
     <div id="control-right">
       <div class="info">
@@ -263,8 +261,39 @@
       </div>
     </div>
   </div>
+
+  <div id="mobile-fab" class="mobile-fab">
+    <img src="../../icons/three-bars.svg" alt="Open actions">
+  </div>
+
+  <div id="mobile-fab-actions" class="mobile-fab-actions">
+    <div onclick="resetOptions();">
+      <img class="left-img" src="../../icons/sync.svg">RESET VISUALS
+    </div>
+
+    <div class="centered">
+      <img class="left-img" src="../../icons/minus.svg" onclick="updateColumns(-1);">
+      COLUMN
+      <img class="right-img" src="../../icons/plus.svg" onclick="updateColumns(+1);">
+    </div>
+
+    <div class="centered">
+      <img class="left-img" src="../../icons/minus.svg" onclick="updateFontSize(-5);">
+      FONT
+      <img class="right-img" src="../../icons/plus.svg" onclick="updateFontSize(+5);">
+    </div>
+
+    <div class="mark-completed" onclick="updateIsCompleted(true, redirect=true);">
+      <img class="left-img" src="../../icons/check.svg">COMPLETE
+    </div>
+
+    <div class="mark-uncompleted" onclick="updateIsCompleted(false);" style="display: none;">
+      <img class="left-img" src="../../icons/minus.svg">UNCOMPLETE
+    </div>
+  </div>
 </body>
 <script src="../../js/options.js"></script>
+<script src="../../js/mobile_fab.js"></script>
 <script src="../../js/song.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -275,6 +304,8 @@
     updateIsCompleted();
     updateFontSize();
     updateColumns();
+
+    loadMobileFab();
   });
 </script>
 

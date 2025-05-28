@@ -26,7 +26,8 @@ class Line:
 @dataclass
 class Song:
     name: str
-    lyrics: str
+    lines: list[Line]
+    tags: list[str]
 
     def __str__(self) -> str:
         return self.name
@@ -34,21 +35,36 @@ class Song:
     def __repr__(self) -> str:
         return f"<Song {self.name}>"
 
+    @classmethod
+    def from_file(cls, name: str, data: str) -> "Song":
+        tags: list[str] = []
+        lines: list[Line] = []
+
+        for line in data.splitlines():
+            line = line.strip()
+            if line.startswith("#"):
+                parts = line.split("#")
+                for part in parts[1:]:
+                    tags.append(part.strip().replace(" ", "_").lower())
+            else:
+                # Skip first empty line
+                if not lines and line == "":
+                    continue
+
+                lines.append(
+                    Line(
+                        text=line,
+                        highlighted=line.startswith("["),
+                        divider=line == "-",
+                        breaked=line == "",
+                    ),
+                )
+
+        return cls(name=name, lines=lines, tags=tags)
+
     @property
     def slug(self) -> str:
         return self.name.lower().replace(" ", "-")
-
-    @property
-    def lines(self) -> list[Line]:
-        return [
-            Line(
-                text=line,
-                highlighted=line.startswith("["),
-                divider=line == "-",
-                breaked=line == "",
-            )
-            for line in map(str.strip, self.lyrics.splitlines())
-        ]
 
 
 @dataclass
@@ -77,7 +93,7 @@ def collect_bands() -> list[Band]:
             band = Band(
                 name=band_dir.name,
                 songs=[
-                    Song(name=f.stem, lyrics=f.read_text(encoding="utf-8"))
+                    Song.from_file(name=f.stem, data=f.read_text(encoding="utf-8"))
                     for f in sorted(band_dir.glob("*.txt"))
                 ],
             )

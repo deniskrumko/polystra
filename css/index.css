@@ -1,8 +1,12 @@
+.band-node {
+    display: block;
+}
+
 .band-name {
     font-size: 30px;
     cursor: default;
     color: #06F1DA;
-    padding: 10px;
+    padding: 20px 0px 5px 25px;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -13,11 +17,10 @@
 
 .song-name {
     font-size: 22px;
-    padding: 0px 10px 10px 20px;
+    padding: 5px 10px 5px 40px;
     cursor: pointer;
     color: #f0f0f0;
     display: inline-block;
-    width: 300px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -27,11 +30,35 @@
     color: #444;
 }
 
-.song-name:hover {
+.song-name:hover>.name {
     color: #06F1DA;
     text-decoration: underline;
 }
 
 .song-name.completed:hover {
     color: #666;
+}
+
+.tag {
+    color: #048f81;
+    text-transform: lowercase;
+    font-family: 'Menlo', 'Courier New', Courier, monospace;
+    font-size: 16px;
+    margin-left: 5px;
+    position: relative;
+    top: -2px;
+}
+
+.song-name.completed .tag {
+    color: #094a44;
+}
+
+@media screen and (max-width: 1000px) {
+    .band-name {
+        padding: 15px 0px 5px 15px;
+    }
+
+    .song-name {
+        padding: 5px 10px 5px 15px;
+    }
 }

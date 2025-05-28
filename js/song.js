@@ -2,7 +2,7 @@ const COMPLETED = "completed";
 const COLUMNS_COUNT = "columnsCount";
 const FONT_SIZE = "fontSize";
 
-const defaultFontSize = 25;
+const defaultFontSize = 20;
 const defaultColumnsCount = 1;
 
 function updateIsCompleted(completed=null, redirect=false) {
@@ -10,16 +10,11 @@ function updateIsCompleted(completed=null, redirect=false) {
     completed = getOption(COMPLETED) || false;
   }
 
-  const markCompleted = document.getElementById("mark-completed");
-  const markUncompleted = document.getElementById("mark-uncompleted");
+  const markCompleted = document.querySelectorAll(".mark-completed");
+  markCompleted.forEach((el) => el.style.display = completed ? "none" : "inline-block" );
 
-  if (completed) {
-    markCompleted.style.display = "none";
-    markUncompleted.style.display = "";
-  } else {
-    markCompleted.style.display = "";
-    markUncompleted.style.display = "none";
-  }
+  const markUncompleted = document.querySelectorAll(".mark-uncompleted");
+  markUncompleted.forEach((el) => el.style.display = completed ? "inline-block" : "none" );
 
   setOption(COMPLETED, completed);
   console.log("Set completed: " + completed);
