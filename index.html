@@ -1,27 +1,158 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="New website" />
-    <title>POLYSTRA MUSIC</title>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="icons/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon/favicon-16x16.png">
-    <link rel="manifest" href="icons/favicon/site.webmanifest">
 
-  </head>
-  <body>
-    <div id="controls">
-      <div id="logo">POLYSTRA</div>
-      <div id="buttons"></div>
-      <div id="info"></div>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="New website" />
+  <title>POLYSTRA MUSIC</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon/favicon-16x16.png">
+  <link rel="manifest" href="icons/favicon/site.webmanifest">
+  <meta name="theme-color" content="#06F1DA">
+</head>
+
+<body>
+  <div id="controls">
+    <div id="control-left">
+      <a id="logo" href="index.html">POLYSTRA MUSIC</a>
     </div>
-    <div id="content">
-      <div class="band-name">DOWNLOADING...</div>
+    <div id="control-center">
     </div>
-  </body>
-  <script src="js/base.js"></script>
+    <div id="control-right">
+      <div class="btn" onclick="resetCompletedSongs();">
+        <img src="icons/sync.svg" alt="">
+        Reset completed
+      </div>
+      <div class="btn" onclick="resetAllOptions();">
+        <img src="icons/sync.svg" alt="">
+        Full reset
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    
+    
+    <div class="band-node">
+      <div class="band-name" data-band="audioslave">Audioslave</div>
+      
+      <a class="song-name" href="pages/audioslave/like-a-stone-(short).html" data-band="audioslave" data-song="like-a-stone-(short)">
+        Like A Stone (Short)
+      </a>
+      
+      <a class="song-name" href="pages/audioslave/out-of-exile.html" data-band="audioslave" data-song="out-of-exile">
+        Out Of Exile
+      </a>
+      
+    </div>
+    
+    <div class="band-node">
+      <div class="band-name" data-band="blur">Blur</div>
+      
+      <a class="song-name" href="pages/blur/song-2.html" data-band="blur" data-song="song-2">
+        Song 2
+      </a>
+      
+    </div>
+    
+    <div class="band-node">
+      <div class="band-name" data-band="electric-six">Electric Six</div>
+      
+      <a class="song-name" href="pages/electric-six/gay-bar.html" data-band="electric-six" data-song="gay-bar">
+        Gay bar
+      </a>
+      
+    </div>
+    
+    <div class="band-node">
+      <div class="band-name" data-band="linkin-park">Linkin Park</div>
+      
+      <a class="song-name" href="pages/linkin-park/one-step-closer.html" data-band="linkin-park" data-song="one-step-closer">
+        One Step Closer
+      </a>
+      
+    </div>
+    
+    <div class="band-node">
+      <div class="band-name" data-band="muse">Muse</div>
+      
+      <a class="song-name" href="pages/muse/psycho.html" data-band="muse" data-song="psycho">
+        Psycho
+      </a>
+      
+    </div>
+    
+    <div class="band-node">
+      <div class="band-name" data-band="nirvana">Nirvana</div>
+      
+      <a class="song-name" href="pages/nirvana/breed.html" data-band="nirvana" data-song="breed">
+        Breed
+      </a>
+      
+    </div>
+    
+    <div class="band-node">
+      <div class="band-name" data-band="radiohead">Radiohead</div>
+      
+      <a class="song-name" href="pages/radiohead/bodysnatchers.html" data-band="radiohead" data-song="bodysnatchers">
+        Bodysnatchers
+      </a>
+      
+      <a class="song-name" href="pages/radiohead/jigsaw-falling-into-place.html" data-band="radiohead" data-song="jigsaw-falling-into-place">
+        Jigsaw Falling Into Place
+      </a>
+      
+    </div>
+    
+    <div class="band-node">
+      <div class="band-name" data-band="rage-against-the-machine">Rage Against The Machine</div>
+      
+      <a class="song-name" href="pages/rage-against-the-machine/killing-in-the-name.html" data-band="rage-against-the-machine" data-song="killing-in-the-name">
+        Killing In The Name
+      </a>
+      
+    </div>
+    
+    <div class="band-node">
+      <div class="band-name" data-band="royal-blood">Royal Blood</div>
+      
+      <a class="song-name" href="pages/royal-blood/figure-it-out.html" data-band="royal-blood" data-song="figure-it-out">
+        Figure It Out
+      </a>
+      
+    </div>
+    
+    <div class="band-node">
+      <div class="band-name" data-band="the-black-keys">The Black Keys</div>
+      
+      <a class="song-name" href="pages/the-black-keys/little-black-submarines-(short).html" data-band="the-black-keys" data-song="little-black-submarines-(short)">
+        Little Black Submarines (Short)
+      </a>
+      
+    </div>
+    
+    <div class="band-node">
+      <div class="band-name" data-band="the-story-so-far">The Story So Far</div>
+      
+      <a class="song-name" href="pages/the-story-so-far/heavy-gloom.html" data-band="the-story-so-far" data-song="heavy-gloom">
+        Heavy Gloom
+      </a>
+      
+    </div>
+    
+  </div>
+</body>
+
+<script src="js/options.js"></script>
+<script src="js/index.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    displayCompletedSongs();
+  });
+</script>
+
 </html>

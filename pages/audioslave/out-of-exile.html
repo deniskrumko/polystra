@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="New website" />
+  <title>Audioslave – Out Of Exile</title>
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/song.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../icons/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon/favicon-16x16.png">
+  <link rel="manifest" href="../../icons/favicon/site.webmanifest">
+</head>
+
+<body>
+  <div id="controls">
+    <div id="control-left">
+      <a id="logo" href="../../index.html">POLYSTRA MUSIC</a>
+    </div>
+    <div id="control-center">
+      <div class="btn" onclick="updateFontSize(+5);">
+        <img src="../../icons/plus.svg" alt="">
+        FONT
+      </div>
+      <div class="btn" onclick="updateFontSize(-5);">
+        <img src="../../icons/minus.svg" alt="">
+        FONT
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="btn" onclick="updateColumns(+1);">
+        <img src="../../icons/plus.svg" alt="">
+        COLUMN
+      </div>
+      <div class="btn" onclick="updateColumns(-1);">
+        <img src="../../icons/minus.svg" alt="">
+        COLUMN
+      </div>
+
+      <div class="divider"></div>
+
+      <div id="mark-completed" class="btn" onclick="updateIsCompleted(true, redirect=true);">
+        <img src="../../icons/check.svg" alt="">
+        MARK COMPLETED
+      </div>
+      <div id="mark-uncompleted" class="btn" onclick="updateIsCompleted(false);" style="display: none;">
+        <img src="../../icons/minus.svg" alt="">
+        MARK UNCOMPLETED
+      </div>
+      <div class="btn" onclick="resetOptions();">
+        <img src="../../icons/sync.svg" alt="">
+        RESET OPTIONS
+      </div>
+
+    </div>
+    <div id="control-right">
+      <div class="info">
+        <b>Audioslave</b> – Out Of Exile
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    <div id="lyrics-parent">
+      <div class="lyrics-block" id="lyrics-block-original">
+        
+        
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[VERSE 1]</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">When I first came to this island</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">That I called by my own name</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">I was happy in this fortress</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">In my exile I remained</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">But the hours grew so empty</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">And the ocean sent her waves</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">In the figure of a woman</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">She pulled me out to sea</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[CHORUS 1]</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">When you come down to take me home</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Send my soul away</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">When you come 'round you'll make me whole</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Send my soul away</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[VERSE 2]</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">On the altar of a sunrise</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Was a wedding in the waves</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">And inside her shone a young light</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">From her labor I was saved</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">Though I've traveled long in darkness</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">In her harvest I'm embraced</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[CHORUS 2]</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">When you come down to take me home</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Send my soul away</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">When you come 'round you'll make me whole</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Send my soul away</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[SOLO]</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[VERSE 3]</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Now the spires and the gables</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Grow in orchards to the sky</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">And the blessings on my table</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Multiply and divide</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-highlighted" onclick="collapseBlock(this);">[CHORUS 3]</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">When you come down to take me home</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Send my soul away</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">When you come 'round you'll make me whole</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Send my soul away</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">Yeah, when you come down to take me home</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">When you come 'round you'll make me whole</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">Yeah, when you come down to take me home</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Send my soul away [x4]</p>
+        
+        
+        <div class="scroll-past-end"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../js/options.js"></script>
+<script src="../../js/song.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    band = 'audioslave';
+    song = 'out-of-exile';
+    console.log('Current page: ' + band + ' – ' + song);
+
+    updateIsCompleted();
+    updateFontSize();
+    updateColumns();
+  });
+</script>
+
+</html>

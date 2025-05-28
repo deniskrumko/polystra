@@ -7,3 +7,5 @@ Sorry, but songlist is hardcoded just for me :)
 
 
 ![](https://raw.githubusercontent.com/deniskrumko/polystra/master/icons/preview.png)
+
+- Lyrics from https://www.azlyrics.com/

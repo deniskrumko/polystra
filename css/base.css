@@ -1,139 +1,97 @@
 body {
-  margin: 0;
-  background: #000;
-  color: #fefefe;
-  font-family: 'Roboto Condensed', monospace;
+    margin: 0;
+    background: #000;
+    color: #fefefe;
+    font-family: 'Roboto Condensed', monospace;
 }
 
-#content-main {
-  height: calc(100vh - 24px);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: flex-start;
-}
-
-.band-node {
-  max-width: 400px;
+a {
+    text-decoration: none;
 }
 
 #controls {
-  background: #06F1DA;
-  color: #000;
-  font-size: 12px;
+    background: #06F1DA;
+    color: #000;
+    font-size: 16px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+
+#control-left,
+#control-right {
+    display: inline-block;
+    padding: 0px 10px;
+    min-width: 200px;
+}
+
+#control-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 #logo {
-  display: inline-block;
-  padding: 5px 20px 5px 10px;
-  font-weight: bold;
-  cursor: default;
+    line-height: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
 }
 
-#buttons {
-  display: inline-block;
+.btn {
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    padding: 5px 5px 5px 30px;
+    line-height: 20px;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-#buttons div {
-  display: inline-block;
-  position: relative;
-  padding: 5px 0px 5px 10px;
-  cursor: pointer;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.info {
+    line-height: 20px;
+    text-transform: uppercase;
+    text-align: right;
 }
 
-#buttons div.with-icon {
-    padding-left: 30px;
-}
-
-#buttons img {
+.btn img {
     position: absolute;
     left: 10px;
-    top: 4px;
+    top: 7px;
 }
 
-#buttons .divider {
+#controls .divider {
     width: 20px;
     display: inline-block;
 }
 
-#buttons div:hover {
-  font-weight: bold;
+.btn:hover {
+    font-weight: bold;
 }
 
-#info {
-  float: right;
-  text-transform: uppercase;
-  font-size: 12px;
-  padding: 5px 10px;
+.warning {
+    color: #110f04;
+    background-color: #fdd008;
+    display: inline-block;
+    padding: 5px 20px;
+    margin: 20px;
+    border-radius: 8px;
+    border: 1px solid #110f04;
 }
 
-#lyrics-parent {
-  display: flex;
-  height: calc(100vh - 24px);
+.warning h1 {
+    padding: 0;
+    margin: 10px 0px;
 }
 
-.band-name,
-.song-name,
-.lyrics-block {
-  font-size: 30px;
-}
-
-.lyrics-block {
-  overflow-y: scroll;
-  padding: 5px;
-  border-right: 1px solid #06F1DA;
-}
-
-.lyrics-line {
-  margin: 5px 20px;
-}
-
-.lyrics-divider {
-    height: 2px;
-    text-align: center;
-    width: 100px;
-    background: #333;
-    margin: 15px 20px;
-}
-
-.scroll-past-end {
-  height: 1000px;
-}
-
-.lyrics-highlighted {
-  color: #06F1DA;
-  margin: 15px 20px;
-  font-size: 20px;
-  letter-spacing: 8px;
-  font-family: Menlo, monospace;
-  cursor: pointer;
-}
-
-.band-name {
-  cursor: default;
-  color: #06F1DA;
-  padding: 10px 25px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.song-name {
-  padding-left: 45px;
-  padding-bottom: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.song-name.completed {
-  color: #333;
-}
-
-.song-name:hover {
-  transform: translateX(10px);
+@media screen and (max-width: 900px) {
+    #control-center, #control-right {
+        display: none !important;
+    }
 }

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="New website" />
+  <title>Blur – Song 2</title>
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/song.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../icons/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../icons/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../icons/favicon/favicon-16x16.png">
+  <link rel="manifest" href="../../icons/favicon/site.webmanifest">
+</head>
+
+<body>
+  <div id="controls">
+    <div id="control-left">
+      <a id="logo" href="../../index.html">POLYSTRA MUSIC</a>
+    </div>
+    <div id="control-center">
+      <div class="btn" onclick="updateFontSize(+5);">
+        <img src="../../icons/plus.svg" alt="">
+        FONT
+      </div>
+      <div class="btn" onclick="updateFontSize(-5);">
+        <img src="../../icons/minus.svg" alt="">
+        FONT
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="btn" onclick="updateColumns(+1);">
+        <img src="../../icons/plus.svg" alt="">
+        COLUMN
+      </div>
+      <div class="btn" onclick="updateColumns(-1);">
+        <img src="../../icons/minus.svg" alt="">
+        COLUMN
+      </div>
+
+      <div class="divider"></div>
+
+      <div id="mark-completed" class="btn" onclick="updateIsCompleted(true, redirect=true);">
+        <img src="../../icons/check.svg" alt="">
+        MARK COMPLETED
+      </div>
+      <div id="mark-uncompleted" class="btn" onclick="updateIsCompleted(false);" style="display: none;">
+        <img src="../../icons/minus.svg" alt="">
+        MARK UNCOMPLETED
+      </div>
+      <div class="btn" onclick="resetOptions();">
+        <img src="../../icons/sync.svg" alt="">
+        RESET OPTIONS
+      </div>
+
+    </div>
+    <div id="control-right">
+      <div class="info">
+        <b>Blur</b> – Song 2
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    <div id="lyrics-parent">
+      <div class="lyrics-block" id="lyrics-block-original">
+        
+        
+        <p class="lyrics-line collapsable">"Song 2"</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">Woo-hoo [4x]</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">I got my head checked</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">By a jumbo jet</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">It wasn't easy</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">But nothing i-is</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">No</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">Woo-hoo</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">When I feel heavy-metal</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Woo-hoo</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">And I'm pins and I'm needles</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Woo-hoo</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Well, I lie and I'm easy</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">All of the time but I'm never sure</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Why I need you</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Pleased to meet you</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">I got my head done</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">When I was young</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">It's not my problem</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">It's not my problem</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">Woo-hoo</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">When I feel heavy-metal</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Woo-hoo</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">And I'm pins and I'm needles</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Woo-hoo</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Well, I lie and I'm easy</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">All of the time but I'm never sure</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Why I need you</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Pleased to meet you</p>
+        
+        
+        
+        <div class="lyrics-break collapsable"></div>
+        
+        
+        
+        <p class="lyrics-line collapsable">Yeah yeah</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Yeah yeah</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Yeah yeah</p>
+        
+        
+        
+        <p class="lyrics-line collapsable">Oh yeah</p>
+        
+        
+        <div class="scroll-past-end"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../js/options.js"></script>
+<script src="../../js/song.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    band = 'blur';
+    song = 'song-2';
+    console.log('Current page: ' + band + ' – ' + song);
+
+    updateIsCompleted();
+    updateFontSize();
+    updateColumns();
+  });
+</script>
+
+</html>

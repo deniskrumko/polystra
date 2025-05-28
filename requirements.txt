@@ -1,0 +1,10 @@
+jinja2
+
+black
+isort
+mypy
+
+flake8
+flake8-pyproject
+flake8-commas
+flake8-isort

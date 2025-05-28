@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="New website" />
+  <title>POLYSTRA MUSIC</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon/favicon-16x16.png">
+  <link rel="manifest" href="icons/favicon/site.webmanifest">
+  <meta name="theme-color" content="#06F1DA">
+</head>
+
+<body>
+  <div id="controls">
+    <div id="control-left">
+      <a id="logo" href="index.html">POLYSTRA MUSIC</a>
+    </div>
+    <div id="control-center">
+    </div>
+    <div id="control-right">
+      <div class="btn" onclick="resetCompletedSongs();">
+        <img src="icons/sync.svg" alt="">
+        Reset completed
+      </div>
+      <div class="btn" onclick="resetAllOptions();">
+        <img src="icons/sync.svg" alt="">
+        Full reset
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    {% if not bands %}
+    <div class="warning">
+      <h1>No lyrics found...</h1>
+      <p>Maybe you didn't add them to lyrics folder?</p>
+    </div>
+    {% endif %}
+    {% for band in bands %}
+    <div class="band-node">
+      <div class="band-name" data-band="{{ band.slug }}">{{ band }}</div>
+      {% for song in band.songs %}
+      <a class="song-name" href="{{ band.get_song_page(song) }}" data-band="{{ band.slug }}" data-song="{{ song.slug}}">
+        {{ song }}
+      </a>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</body>
+
+<script src="js/options.js"></script>
+<script src="js/index.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    displayCompletedSongs();
+  });
+</script>
+
+</html>

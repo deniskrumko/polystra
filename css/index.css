@@ -1,0 +1,37 @@
+.band-name {
+    font-size: 30px;
+    cursor: default;
+    color: #06F1DA;
+    padding: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.band-name.completed {
+    color: #094a44;
+}
+
+.song-name {
+    font-size: 22px;
+    padding: 0px 10px 10px 20px;
+    cursor: pointer;
+    color: #f0f0f0;
+    display: inline-block;
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-name.completed {
+    color: #444;
+}
+
+.song-name:hover {
+    color: #06F1DA;
+    text-decoration: underline;
+}
+
+.song-name.completed:hover {
+    color: #666;
+}
