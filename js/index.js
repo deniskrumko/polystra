@@ -43,6 +43,8 @@ function resetCompletedSongs() {
     displayCompletedSongs();
     console.log('Reset completed songs');
   }
+
+  closeFab();
 }
 
 function resetAllOptions() {
@@ -53,4 +55,6 @@ function resetAllOptions() {
   } else {
     console.log('Reset all options cancelled');
   }
+
+  closeFab();
 }
