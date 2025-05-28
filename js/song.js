@@ -2,7 +2,7 @@ const COMPLETED = "completed";
 const COLUMNS_COUNT = "columnsCount";
 const FONT_SIZE = "fontSize";
 
-const defaultFontSize = 20;
+const defaultFontSize = 18;
 const defaultColumnsCount = 1;
 
 let collapsedAll = false;

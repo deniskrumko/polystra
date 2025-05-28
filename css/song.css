@@ -11,7 +11,7 @@
 
 .lyrics-line {
     margin: 5px 20px;
-    font-size: 30px;
+    font-size: 18px;
 }
 
 .lyrics-divider {
@@ -86,5 +86,9 @@
 
     .lyrics-highlighted {
         margin: 15px 7px;
+    }
+
+    .scroll-past-end {
+        height: 100px;
     }
 }
