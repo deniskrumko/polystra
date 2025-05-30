@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="description" content="New website" />
-  <title>POLYSTRA MUSIC</title>
+  <meta name="description" content="View music lyrics with comfort" />
+  <title>Polystra</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/index.css">
   <link rel="apple-touch-icon" sizes="180x180" href="icons/favicon/apple-touch-icon.png">
@@ -21,7 +21,7 @@
   <div id="controls">
     <div id="control-left">
       <a class="logo" href="index.html">
-        <b>POLYSTRA MUSIC</b>
+        <b>POLYSTRA</b>
       </a>
     </div>
     <div id="control-center">
@@ -31,7 +31,7 @@
         <img src="icons/sync.svg">Reset completed
       </div>
       <div class="btn" onclick="resetAllOptions();">
-        <img src="icons/sync.svg">Full reset
+        <img src="icons/trash.svg">Full reset
       </div>
     </div>
   </div>
@@ -43,19 +43,11 @@
       
       <a class="song-name" href="pages/audioslave/like-a-stone.html" data-band="audioslave" data-song="like-a-stone">
         <span class="name">Like A Stone</span>
-        <span class="tags">
-          
-          <span class="tag">#short_version</span>
-          
-        </span>
       </a>
       <br>
       
       <a class="song-name" href="pages/audioslave/out-of-exile.html" data-band="audioslave" data-song="out-of-exile">
         <span class="name">Out Of Exile</span>
-        <span class="tags">
-          
-        </span>
       </a>
       <br>
       
@@ -66,9 +58,6 @@
       
       <a class="song-name" href="pages/blur/song-2.html" data-band="blur" data-song="song-2">
         <span class="name">Song 2</span>
-        <span class="tags">
-          
-        </span>
       </a>
       <br>
       
@@ -79,9 +68,6 @@
       
       <a class="song-name" href="pages/electric-six/gay-bar.html" data-band="electric-six" data-song="gay-bar">
         <span class="name">Gay Bar</span>
-        <span class="tags">
-          
-        </span>
       </a>
       <br>
       
@@ -92,9 +78,6 @@
       
       <a class="song-name" href="pages/linkin-park/one-step-closer.html" data-band="linkin-park" data-song="one-step-closer">
         <span class="name">One Step Closer</span>
-        <span class="tags">
-          
-        </span>
       </a>
       <br>
       
@@ -105,11 +88,6 @@
       
       <a class="song-name" href="pages/muse/psycho.html" data-band="muse" data-song="psycho">
         <span class="name">Psycho</span>
-        <span class="tags">
-          
-          <span class="tag">#short_version</span>
-          
-        </span>
       </a>
       <br>
       
@@ -120,9 +98,6 @@
       
       <a class="song-name" href="pages/nirvana/breed.html" data-band="nirvana" data-song="breed">
         <span class="name">Breed</span>
-        <span class="tags">
-          
-        </span>
       </a>
       <br>
       
@@ -133,17 +108,11 @@
       
       <a class="song-name" href="pages/radiohead/bodysnatchers.html" data-band="radiohead" data-song="bodysnatchers">
         <span class="name">Bodysnatchers</span>
-        <span class="tags">
-          
-        </span>
       </a>
       <br>
       
       <a class="song-name" href="pages/radiohead/jigsaw-falling-into-place.html" data-band="radiohead" data-song="jigsaw-falling-into-place">
         <span class="name">Jigsaw Falling Into Place</span>
-        <span class="tags">
-          
-        </span>
       </a>
       <br>
       
@@ -154,9 +123,6 @@
       
       <a class="song-name" href="pages/rage-against-the-machine/killing-in-the-name.html" data-band="rage-against-the-machine" data-song="killing-in-the-name">
         <span class="name">Killing In The Name</span>
-        <span class="tags">
-          
-        </span>
       </a>
       <br>
       
@@ -167,9 +133,6 @@
       
       <a class="song-name" href="pages/royal-blood/figure-it-out.html" data-band="royal-blood" data-song="figure-it-out">
         <span class="name">Figure It Out</span>
-        <span class="tags">
-          
-        </span>
       </a>
       <br>
       
@@ -180,11 +143,6 @@
       
       <a class="song-name" href="pages/the-black-keys/little-black-submarines.html" data-band="the-black-keys" data-song="little-black-submarines">
         <span class="name">Little Black Submarines</span>
-        <span class="tags">
-          
-          <span class="tag">#short_version</span>
-          
-        </span>
       </a>
       <br>
       
@@ -195,14 +153,13 @@
       
       <a class="song-name" href="pages/the-story-so-far/heavy-gloom.html" data-band="the-story-so-far" data-song="heavy-gloom">
         <span class="name">Heavy Gloom</span>
-        <span class="tags">
-          
-        </span>
       </a>
       <br>
       
     </div>
     
+    <br>
+    <br>
     <br>
     <br>
   </div>
@@ -212,8 +169,12 @@
   </div>
 
   <div id="mobile-fab-actions" class="mobile-fab-actions">
+    <a class="fab-btn fab-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+      <img class="left-img" src="icons/info.svg">
+      Help
+    </a>
     <div class="fab-btn" onclick="resetAllOptions();">
-      <img class="left-img" src="icons/sync.svg">Reset all
+      <img class="left-img" src="icons/trash.svg">Full reset
     </div>
     <div class="fab-btn" onclick="resetCompletedSongs();">
       <img class="left-img" src="icons/sync.svg">Reset completed

@@ -93,8 +93,12 @@
     }
 }
 
-@media screen and (max-height: 380px) {
-    .fab-link {
+@media screen and (max-width: 450px) {
+    .lyrics-block {
+        width: 100%;
+    }
+
+    .lyrics-block-clone {
         display: none !important;
     }
 }

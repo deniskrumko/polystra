@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="description" content="New website" />
-  <title>POLYSTRA MUSIC</title>
+  <meta name="description" content="View music lyrics with comfort" />
+  <title>Polystra</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/index.css">
   <link rel="apple-touch-icon" sizes="180x180" href="icons/favicon/apple-touch-icon.png">
@@ -21,7 +21,7 @@
   <div id="controls">
     <div id="control-left">
       <a class="logo" href="index.html">
-        <b>POLYSTRA MUSIC</b>
+        <b>POLYSTRA</b>
       </a>
     </div>
     <div id="control-center">
@@ -31,7 +31,7 @@
         <img src="icons/sync.svg">Reset completed
       </div>
       <div class="btn" onclick="resetAllOptions();">
-        <img src="icons/sync.svg">Full reset
+        <img src="icons/trash.svg">Full reset
       </div>
     </div>
   </div>
@@ -48,16 +48,13 @@
       {% for song in band.songs %}
       <a class="song-name" href="{{ band.get_song_page(song) }}" data-band="{{ band.slug }}" data-song="{{ song.slug}}">
         <span class="name">{{ song }}</span>
-        <span class="tags">
-          {% for tag in song.tags %}
-          <span class="tag">#{{ tag }}</span>
-          {% endfor %}
-        </span>
       </a>
       <br>
       {% endfor %}
     </div>
     {% endfor %}
+    <br>
+    <br>
     <br>
     <br>
   </div>
@@ -67,8 +64,12 @@
   </div>
 
   <div id="mobile-fab-actions" class="mobile-fab-actions">
+    <a class="fab-btn fab-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+      <img class="left-img" src="icons/info.svg">
+      Help
+    </a>
     <div class="fab-btn" onclick="resetAllOptions();">
-      <img class="left-img" src="icons/sync.svg">Reset all
+      <img class="left-img" src="icons/trash.svg">Full reset
     </div>
     <div class="fab-btn" onclick="resetCompletedSongs();">
       <img class="left-img" src="icons/sync.svg">Reset completed

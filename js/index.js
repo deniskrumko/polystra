@@ -48,7 +48,7 @@ function resetCompletedSongs() {
 }
 
 function resetAllOptions() {
-  if (window.confirm('Reset all song visuals (font, columns) and completed songs?')) {
+  if (window.confirm('Reset all font sizes, added columns and completed songs?')) {
     resetOptions();
     displayCompletedSongs();
     console.log('Reset all options');
@@ -58,3 +58,12 @@ function resetAllOptions() {
 
   closeFab();
 }
+
+document.querySelectorAll('.band-name').forEach(bandEl => {
+  bandEl.addEventListener('click', () => {
+    bandEl.classList.remove('shake'); // Remove if present to retrigger
+    // Force reflow to restart animation
+    void bandEl.offsetWidth;
+    bandEl.classList.add('shake');
+  });
+});
