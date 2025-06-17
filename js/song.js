@@ -47,7 +47,11 @@ function updateFontSize(step = 0, asDefault = false) {
 
   let lines = document.querySelectorAll(".lyrics-line");
   for (let i = 0; i < lines.length; i++) {
-    lines[i].style.fontSize = fontSize + "px";
+    if (lines[i].classList.contains("chords")) {
+      lines[i].style.fontSize = (fontSize * 0.85) + "px";
+    } else {
+      lines[i].style.fontSize = fontSize + "px";
+    }
   }
 
   setOption(FONT_SIZE, fontSize);

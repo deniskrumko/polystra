@@ -29,10 +29,10 @@
     </div>
     <div id="control-center">
       <div class="btn" onclick="updateFontSize(+2);">
-        <img src="../../icons/plus.svg">Size
+        <img src="../../icons/plus.svg">Font
       </div>
       <div class="btn" onclick="updateFontSize(-2);">
-        <img src="../../icons/minus.svg">Size
+        <img src="../../icons/minus.svg">Font
       </div>
 
       <div class="divider"></div>
@@ -74,6 +74,8 @@
         {% for line in song.lines %}
         {% if line.highlighted %}
         <p class="lyrics-highlighted" onclick="collapseBlock(this);">{{ line }}</p>
+        {% elif line.chords %}
+        <p class="lyrics-line chords collapsable">{{ line }}</p>
         {% elif line.divider %}
         <div class="lyrics-divider collapsable"></div>
         {% elif line.breaked %}

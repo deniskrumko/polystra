@@ -10,6 +10,13 @@ from jinja2 import (
 LYRICS_DIR = Path("lyrics")
 TEMPLATE_DIR = Path("templates")
 PAGES_DIR = Path("pages")
+CHORDS = ("A", "B", "C", "D", "E", "F", "G")
+
+
+def detect_chords(line: str) -> bool:
+    """Returns true if line is a line of chords."""
+    parts = [len(c) <= 3 and any(map(c.startswith, CHORDS)) for c in line.split()]
+    return all(parts) and len(parts) > 1
 
 
 @dataclass
@@ -24,6 +31,7 @@ class Line:
     highlighted: bool = False
     breaked: bool = False
     divider: bool = False
+    chords: bool = False
 
     def __str__(self) -> str:
         return self.formatted_text
@@ -86,6 +94,7 @@ class Song:
                         highlighted=line.startswith("["),
                         divider=line == "-",
                         breaked=line == "",
+                        chords=detect_chords(line),
                     ),
                 )
 
