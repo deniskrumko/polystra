@@ -1,10 +1,28 @@
+[project]
+name = "polystra"
+version = "0.1.0"
+description = "Website for viewing large song lyrics on rehearsals"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "jinja2",
+]
+
+[dependency-groups]
+dev = [
+    "black",
+    "isort",
+    "mypy",
+    "flake8",
+    "flake8-pyproject",
+    "flake8-commas",
+    "flake8-isort",
+]
+
 [tool.black]
 line-length = 100
 target-version = [
-    "py38",
-    "py39",
-    "py310",
-    "py311",
+    "py313",
 ]
 include = '\.pyi?$'
 

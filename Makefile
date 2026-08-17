@@ -1,12 +1,12 @@
-.PHONY: build deps
+.PHONY: build deps check
 
 build:
-	@PYTHONPATH=. python build.py
+	@PYTHONPATH=. uv run python build.py
 
 deps:
-	pip install -r requirements.txt
+	uv sync
 
 check:
-	black .
-	isort .
-	flake8 .
+	uv run black .
+	uv run isort .
+	uv run flake8 .
